@@ -37,6 +37,31 @@ end
 kstore = Barong::KeyStore.new(pkey)
 
 Barong::App.define do |config|
+  config.set(:event_api_rabbitmq_url, '')
+  config.set(:event_api_rabbitmq_host, 'localhost')
+  config.set(:event_api_rabbitmq_port, '5672')
+  config.set(:event_api_rabbitmq_username, 'guest')
+  config.set(:event_api_rabbitmq_password, 'guest')
+
+  config.set(:sender_email, 'noreply@barong.io')
+  config.set(:sender_name, 'Barong')
+
+  config.set(:smtp_password, '')
+  config.set(:smtp_port, 1025)
+  config.set(:smtp_host, 'localhost')
+  config.set(:smtp_user, '')
+
+  config.set(:default_language, 'en')
+end
+
+ActionMailer::Base.smtp_settings = {
+  address: Barong::App.config.smtp_host,
+  port: Barong::App.config.smtp_port,
+  user_name: Barong::App.config.smtp_user,
+  password: Barong::App.config.smtp_password
+}
+
+Barong::App.define do |config|
   config.set(:app_name, 'Barong')
   config.set(:barong_domain, 'barong.io')
   config.set(:barong_uid_prefix, 'ID', regex: /^[A-z]{2,6}$/)

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many  :api_keys,   dependent: :destroy, class_name: 'APIKey'
   has_many  :activities, dependent: :destroy
 
-  validates_length_of :data, :maximum => 1024
+  validates_length_of :data, maximum: 1024
   validate :role_exists
   validate :referral_exists
   validates :data, data_is_json: true
@@ -137,6 +137,14 @@ class User < ApplicationRecord
 
   def as_payload
     as_json(only: %i[uid email referral_id role level state])
+  end
+
+  def language
+    if data.blank?
+      Barong::App.config.default_language
+    else
+      JSON.parse(data)['language'] || Barong::App.config.default_language
+    end
   end
 
   private
