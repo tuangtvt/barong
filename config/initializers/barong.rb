@@ -43,8 +43,8 @@ Barong::App.define do |config|
   config.set(:event_api_rabbitmq_username, 'guest')
   config.set(:event_api_rabbitmq_password, 'guest')
 
-  config.set(:sender_email, 'noreply@barong.io')
-  config.set(:sender_name, 'Barong')
+  config.set(:sender_email, 'noreply@postmaster.io')
+  config.set(:sender_name, 'Postmaster')
 
   config.set(:smtp_password, '')
   config.set(:smtp_port, 1025)
