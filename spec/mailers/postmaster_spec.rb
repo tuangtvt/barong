@@ -29,7 +29,7 @@ RSpec.describe PostmasterMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('Test Email')
       expect(mail.to).to eq(['test1@gmail.com'])
-      expect(mail.from).to eq(['noreply@barong.io'])
+      expect(mail.from).to eq(['noreply@postmaster.io'])
     end
 
     it 'renders the body' do
