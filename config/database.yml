@@ -9,12 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: barong_development
+  database: auth_development
 
 test:
   <<: *default
-  database: barong_test
+  database: auth_test
 
 production:
   <<: *default
-  database: <%= ENV.fetch('DATABASE_NAME', 'barong_production') %>
+  database: <%= ENV.fetch('DATABASE_NAME', 'auth_production') %>
